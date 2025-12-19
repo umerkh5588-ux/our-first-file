@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add to Cart</title>
+</head>
+<body>
+
+<h2>Product</h2>
+<p>Product Name: Shoes</p>
+<p>Price: ₹1000</p>
+
+<button onclick="addToCart()">Add to Cart</button>
+
+<p id="cartMsg"></p>
+
+<script>
+  let cartCount = 0;
+
+  function addToCart() {
+    cartCount++;
+    document.getElementById("cartMsg").innerText =
+      "Item added to cart. Total items: " + cartCount;
+  }
+</script>
+
+</body>
+</html>
