@@ -2,24 +2,55 @@
 <html>
 <head>
   <title>Add to Cart</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .cart {
+      position: fixed;
+      top: 10px;
+      right: 20px;
+      background: #333;
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 20px;
+    }
+    button {
+      padding: 10px 15px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
 
+<div class="cart">
+  🛒 Cart: <span id="cartCount">0</span>
+</div>
+
 <h2>Product</h2>
-<p>Product Name: Shoes</p>
-<p>Price: ₹1000</p>
+<p><strong>Product Name:</strong> Shoes</p>
+<p><strong>Price:</strong> ₹1000</p>
 
 <button onclick="addToCart()">Add to Cart</button>
 
 <p id="cartMsg"></p>
 
 <script>
-  let cartCount = 0;
+  // Load cart count from localStorage
+  let cartCount = localStorage.getItem("cartCount")
+    ? parseInt(localStorage.getItem("cartCount"))
+    : 0;
+
+  document.getElementById("cartCount").innerText = cartCount;
 
   function addToCart() {
     cartCount++;
+    localStorage.setItem("cartCount", cartCount);
+
+    document.getElementById("cartCount").innerText = cartCount;
     document.getElementById("cartMsg").innerText =
-      "Item added to cart. Total items: " + cartCount;
+      "Item added to cart successfully!";
   }
 </script>
 
